@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Post, type: :model do
+RSpec.describe "Post", type: :request do
   subject do
     Post.new(created_at: Time.now, updated_at: Time.now, user_id: 1, title: 'Random title', text: 'Random text',
              comments_counter: 0, likes_counter: 0)
