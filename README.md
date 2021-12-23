@@ -16,6 +16,7 @@ Make sure you have the latest version of Ruby installed.
   - Run `rails s` to start the server.
   - Open up the page `localhost:3000` on your browser to display the app.
 
+
 ## Authors
 
 👤 **Isabella Namutenda**
