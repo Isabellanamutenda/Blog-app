@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Users", type: :request do
+RSpec.describe 'Users', type: :request do
   subject do
     User.new(created_at: Time.now, updated_at: Time.now, name: 'User 1', photo: 'Random URL', bio: 'Random text',
              posts_counter: 0)
