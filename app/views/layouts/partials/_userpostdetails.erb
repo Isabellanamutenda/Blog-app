@@ -1,0 +1,15 @@
+<div class="user-div">
+    <div style="display:flex;flex-flow:column;">
+        <h2> <%= @post.title %> </h2><p class="user-posts" style="display:inline-flex;"> Likes:<%= @post.likes.size %><br>Comments:<%= @post.comments.size %> </p>
+        <%= link_to 'Like this post', "./#{params['id']}/likes/new", method: 'post', local: true %>
+        <h3> <%= @post.text%> </h3>
+    </div>
+</div>
+<div class="comments">
+    <h2> Comments </h2>
+        <% comments = @post.comments.most_recent %>
+        <% comments.each do |comment| %>
+            <h3> <%= comment.user.name %> : <%= comment.text %></h3>
+        <% end %>
+        <a href='./<%= params["id"] %>/comments/new'>Add a new comment</a>
+</div>
