@@ -1,7 +1,7 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 ![](https://img.shields.io/badge/Ruby-red)
 
-# Rails - Blog App
+# RBlog App
 Simple blog app to understand RoR basics.
 
 # Built with
