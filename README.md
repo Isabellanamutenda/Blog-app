@@ -1,7 +1,7 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 ![](https://img.shields.io/badge/Ruby-red)
 
-# Rails - Blog App
+# RBlog App
 Simple blog app to understand RoR basics.
 
 # Built with
@@ -15,6 +15,7 @@ Make sure you have the latest version of Ruby installed.
   - Run `bundle install` in the command line to install the dependencies.
   - Run `rails s` to start the server.
   - Open up the page `localhost:3000` on your browser to display the app.
+
 
 ## Authors
 
