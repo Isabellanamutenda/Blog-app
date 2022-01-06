@@ -2,7 +2,6 @@
 // List groups
 // --------------------------------------------------
 
-
 // Base class
 //
 // Easily usable on <ul>, <ol>, or <div>.
@@ -12,7 +11,6 @@
   padding-left: 0; // reset padding because ul and ol
   margin-bottom: 20px;
 }
-
 
 // Individual list items
 //
@@ -31,8 +29,10 @@
   &:first-child {
     @include border-top-radius($list-group-border-radius);
   }
+
   &:last-child {
     margin-bottom: 0;
+
     @include border-bottom-radius($list-group-border-radius);
   }
 
@@ -48,6 +48,7 @@
     .list-group-item-heading {
       color: inherit;
     }
+
     .list-group-item-text {
       color: $list-group-disabled-text-color;
     }
@@ -68,12 +69,12 @@
     .list-group-item-heading > .small {
       color: inherit;
     }
+
     .list-group-item-text {
       color: $list-group-active-text-color;
     }
   }
 }
-
 
 // Interactive list items
 //
@@ -102,7 +103,6 @@ button.list-group-item {
   text-align: left;
 }
 
-
 // Contextual variants
 //
 // Add modifier classes to change text and background color on individual items.
@@ -113,7 +113,6 @@ button.list-group-item {
 @include list-group-item-variant(warning, $state-warning-bg, $state-warning-text);
 @include list-group-item-variant(danger, $state-danger-bg, $state-danger-text);
 
-
 // Custom content options
 //
 // Extra classes for creating well-formatted content within `.list-group-item`s.
@@ -122,6 +121,7 @@ button.list-group-item {
   margin-top: 0;
   margin-bottom: 5px;
 }
+
 .list-group-item-text {
   margin-bottom: 0;
   line-height: 1.3;

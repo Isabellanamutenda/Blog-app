@@ -2,15 +2,17 @@
 // Pager pagination
 // --------------------------------------------------
 
-
 .pager {
   padding-left: 0;
   margin: $line-height-computed 0;
   text-align: center;
   list-style: none;
+
   @include clearfix;
+
   li {
     display: inline;
+
     > a,
     > span {
       display: inline-block;

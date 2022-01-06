@@ -35,6 +35,7 @@
   }
   &.in .modal-dialog { @include translate(0, 0); }
 }
+
 .modal-open .modal {
   overflow-x: hidden;
   overflow-y: auto;
@@ -55,7 +56,8 @@
   border: 1px solid $modal-content-fallback-border-color; //old browsers fallback (ie8 etc)
   border: 1px solid $modal-content-border-color;
   border-radius: $border-radius-large;
-  @include box-shadow(0 3px 9px rgba(0, 0, 0, .5));
+
+  @include box-shadow(0 3px 9px rgba(0, 0, 0, 0.5));
   // Remove focus outline from opened modal
   outline: 0;
 }
@@ -79,6 +81,7 @@
 .modal-header {
   padding: $modal-title-padding;
   border-bottom: 1px solid $modal-header-border-color;
+
   @include clearfix;
 }
 // Close icon
@@ -104,6 +107,7 @@
   padding: $modal-inner-padding;
   text-align: right; // right align buttons
   border-top: 1px solid $modal-footer-border-color;
+
   @include clearfix; // clear it in case folks use .pull-* classes on buttons
 
   // Properly space out buttons
@@ -137,8 +141,9 @@
     width: $modal-md;
     margin: 30px auto;
   }
+
   .modal-content {
-    @include box-shadow(0 5px 15px rgba(0, 0, 0, .5));
+    @include box-shadow(0 5px 15px rgba(0, 0, 0, 0.5));
   }
 
   // Modal sizes
