@@ -11,7 +11,7 @@ The Blog app is a classic example of a blog website. It's a functional website t
 
 To get a local copy up and running follow these simple example steps.
 
-git clone https://github.com/Donard97/blog-app.git
+git clone https://github.com/Isabellanamutenda/Blog-app.git
 
 cd Trending-Blog-app
 
@@ -72,19 +72,18 @@ run the test with:
 rspec spec
 ```
 
-## Author
+## Authors
 
-👤 **Donard Golaj**
+👤 **Isabella Namutenda**
 
-- Github : [@Donard97](https://github.com/Donard97)
-- Twitter: [@donardgolaj](https://twitter.com/donardgolaj)
-- LinkdIn : [@donard-golaj](https://www.linkedin.com/in/donard-golaj/)
+-   Github: [@Isabellanamutenda](https://github.com/Isabellanamutenda)
+-   Linkedin: [Isabellanamutenda](https://www.linkedin.com/in/isabella-namutenda/)
 
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/Donard97/blog-app/issues).
+Feel free to check the issues page.
 
 ## Show your support
 
