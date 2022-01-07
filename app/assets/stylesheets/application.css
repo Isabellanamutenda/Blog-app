@@ -14,42 +14,71 @@
  *= require_self
  */
 
-    /* Index styling */
+a {
+  text-decoration: none;
+  color: black;
+}
 
- .user-div {
-     padding: 10px;
-     border: 2px solid black;
-     display: flex;
-     flex-flow: row;
-     align-items: center;
- }
+.user-body {
+  display: flex;
+  justify-content: space-between;
+}
 
- .user-image {
-     width: 100px;
-     height: 100px;
-     border: 1px solid grey;
-     margin-right: 20px;
- }
+.user-title {
+  font-size: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
- .user-posts {
-     margin-left: auto;
+.user-text {
+  flex-direction: column;
+  vertical-align: bottom;
+  margin-top: auto;
+}
 
- }
+.user-img {
+  max-height: 200px;
+  object-fit: fill;
+  width: 100%;
+}
 
- /* Details styling */
- .user-details-container {
-     display: flex;
- }
+.bio {
+  margin: 0 10px;
+  width: 98.3%;
+}
 
- /* Comment styling */
- .comments {
-     border: 1px solid red;
-     margin: 10px 0 10px 0;
- }
+.post-title {
+  font-size: 1.5rem;
+}
 
- .button {
-     font-size: 2em;
-     height: 100px;
-     background-color: darkgrey;
- }
- 
+.post-text {
+  font-size: 17px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.comment-author {
+  margin-right: 1rem;
+}
+
+.post-description {
+  font-size: 1.5rem;
+}
+
+.form {
+  width: 70%;
+  margin: auto;
+}
+
+.post-btn {
+  padding: 3px 10px;
+  margin: 5px;
+}
+
+.comment-btn {
+  float: right;
+  padding: 3px 10px;
+  margin: 5px;
+}
