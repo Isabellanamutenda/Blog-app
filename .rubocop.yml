@@ -7,7 +7,7 @@ AllCops:
     - "Guardfile"
     - "Rakefile"
     - "node_modules/**/*"
-    -  "vendor/bundle/**/*"
+    - "vendor/bundle/**/*"
 
   DisplayCopNames: true
 
@@ -17,7 +17,7 @@ Metrics/MethodLength:
   Include:
     - "app/controllers/*"
     - "app/models/*"
-  Max: 200
+  Max: 1000
 Metrics/AbcSize:
   Include:
     - "app/controllers/*"
