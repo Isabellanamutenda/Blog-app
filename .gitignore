@@ -36,6 +36,4 @@ yarn-debug.log*
 .yarn-integrity
 
 # Ignore folder
-# /vendor
-/vendor/bundle
-/bundle
+/vendor
