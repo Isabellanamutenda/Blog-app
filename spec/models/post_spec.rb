@@ -1,35 +1,51 @@
 require 'rails_helper'
 
-RSpec.describe 'Post', type: :request do
-  subject do
-    Post.new(created_at: Time.now, updated_at: Time.now, user_id: 1, title: 'Random title', text: 'Random text',
-             comments_counter: 0, likes_counter: 0)
+RSpec.describe Post, type: :model do
+  user = User.new(name: 'Donard', bio: 'I am a Full-stack developer', posts_counter: 0, photo: 'https://avatars.githubusercontent.com/u/74506933?v=4')
+  post = Post.new(title: 'Post 1', text: 'Text...', comments_counter: 0, likes_counter: 0, author_id: user.id)
+
+  before(:each) { post.save }
+
+  it 'validates the presence of the title' do
+    post.title = nil
+    expect(post).to_not be_valid
   end
 
-  before { subject.save }
-
-  it 'Title should be present' do
-    subject.title = nil
-    expect(subject).to_not be_valid
+  it 'validates the presence of the text' do
+    post.text = nil
+    expect(post).to_not be_valid
   end
 
-  it 'Text should be present' do
-    subject.title = nil
-    expect(subject).to_not be_valid
+  it 'validates the presence of the comments_counter' do
+    post.comments_counter = nil
+    expect(post).to_not be_valid
   end
 
-  it 'User ID should be a number' do
-    subject.user_id = 'pizza'
-    expect(subject).to_not be_valid
+  it 'validates the numericality of the comments_counter' do
+    post.comments_counter = 'This is really good post!'
+    expect(post).to_not be_valid
   end
 
-  it 'Comments counter should start at 0' do
-    subject.comments_counter = -5
-    expect(subject).to_not be_valid
+  it 'validates the presence of the likes_counter' do
+    post.likes_counter = nil
+    expect(post).to_not be_valid
   end
 
-  it 'Likes counter should start at 0' do
-    subject.likes_counter = -5
-    expect(subject).to_not be_valid
+  it 'validates the numericality of the likes_counter' do
+    post.likes_counter = '1'
+    expect(post).to_not be_valid
+  end
+
+  it 'validates the presence of the author_id' do
+    post.author_id = nil
+    expect(post).to_not be_valid
+  end
+
+  describe '#recent_comments' do
+    before(:each) { 5.times { |i| Comment.new(text: "Comment #{i}", post_id: post.id) } }
+
+    it 'returns the last 3 comments' do
+      expect(post.recent_comments).to eq(Comment.order(created_at: :desc).limit(3))
+    end
   end
 end
