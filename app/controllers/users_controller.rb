@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
-  def index
-    @users = User.all
-  end
+  def index; end
 
   def show
-    @user = current_user.users.find(params[:id])
-    @posts = @user.recent_posts
+    return unless User.exists?(id: params['id'])
+
+    @user = User.find_by(id: params['id'])
+    render '../views/layouts/partials/_userdetails'
   end
 end
