@@ -1,2 +1,6 @@
-<h1>This is the main section for the users</h1>
-<%= render "layouts/partials/usermain" %>
+<%  @users.each  do |user| %>
+<a href="/users/<%= user.id %>" class="link" >
+<%= render partial: "user_card", object: user, as: 'user' %>
+</a>
+<% end %>
+

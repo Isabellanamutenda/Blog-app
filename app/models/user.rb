@@ -1,17 +1,29 @@
 class User < ApplicationRecord
-  has_many :posts, dependent: :destroy
-  has_many :comments, dependent: :destroy
-  has_many :likes, dependent: :destroy
+  include Devise::JWT::RevocationStrategies::JTIMatcher
+  after_create :set_roles
+  # Include default devise modules. Others available are:
+  # :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable,
+         :jwt_authenticatable, jwt_revocation_strategy: self
+  has_many :posts, foreign_key: 'author_id'
+  has_many :comments, foreign_key: 'author_id'
+  has_many :likes, foreign_key: 'author_id'
 
-  validates :id, uniqueness: true
   validates :name, presence: true
-  validates :photo, presence: true
-  validates :bio, presence: true
-  validates :posts_counter, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :posts_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0, allow_nil: true }
 
-  # A method that returns the 3 most recent posts for a given user.
+  def recent_posts
+    posts.order(created_at: :desc).limit(3)
+  end
 
-  def show_posts()
-    posts.order(created_at: :asc).limit(3)
+  def admin?
+    role == 'admin'
+  end
+
+  private
+
+  def set_roles
+    update(role: 'user')
   end
 end

@@ -1,10 +1,13 @@
 class UsersController < ApplicationController
-  def index; end
+  def index
+    if current_user
+      @users = User.all
+    else
+      redirect_to user_session_path
+    end
+  end
 
   def show
-    return unless User.exists?(id: params['id'])
-
-    @user = User.includes(posts: %i[comments likes]).find_by(id: params['id'])
-    render '../views/layouts/partials/_userdetails'
+    @user = User.find(params[:id])
   end
 end

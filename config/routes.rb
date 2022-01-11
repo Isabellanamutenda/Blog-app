@@ -1,11 +1,21 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  root 'pages#index'
-  resources :users, only: %i[index show] do
-    resources :posts, only: %i[new create index show ] do
-      get 'comments/new', to: 'comments#new'
-      post 'comments/new', to: 'comments#create'
-      post 'likes/new', to: 'likes#create'
+  devise_for :users 
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root 'users#index'
+  resources :users, only: [:index, :show] do
+    resources :posts, only: [:index, :new, :show, :create, :destroy] do
+  end
+
+  resources :posts do
+    resources :comments, only: [:new, :create, :destroy]
     end
   end
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  namespace :api, defaults: { format: :json } do
+    resources :posts, only: [:index] do
+      resources :comments, only: [:create, :index]
+    end
+  end
 end

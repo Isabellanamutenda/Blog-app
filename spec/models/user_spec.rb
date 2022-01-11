@@ -1,30 +1,44 @@
 require 'rails_helper'
 
-RSpec.describe 'Users', type: :request do
-  subject do
-    User.new(created_at: Time.now, updated_at: Time.now, name: 'User 1', photo: 'Random URL', bio: 'Random text',
-             posts_counter: 0)
+RSpec.describe User, type: :model do
+  user = User.new(name: 'Donard', bio: 'I am a Full-stack developer', posts_counter: 0, photo: 'https://avatars.githubusercontent.com/u/74506933?v=4')
+
+  before(:each) { user.save }
+
+  it 'validates the presence of the name' do
+    user.name = nil
+    expect(user).to_not be_valid
   end
 
-  before { subject.save }
-
-  it 'Name should be present' do
-    subject.name = nil
-    expect(subject).to_not be_valid
+  it 'validates the presence of the posts_counter' do
+    user.posts_counter = nil
+    expect(user).to_not be_valid
   end
 
-  it 'Photo should be present' do
-    subject.photo = nil
-    expect(subject).to_not be_valid
+  it 'validates the numericality of the posts_counter' do
+    user.posts_counter = 'a'
+    expect(user).to_not be_valid
   end
 
-  it 'Bio should be present' do
-    subject.bio = nil
-    expect(subject).to_not be_valid
+  it 'validates the presence of the bio' do
+    user.bio = nil
+    expect(user).to_not be_valid
   end
 
-  it 'Posts counter should start at 0' do
-    subject.posts_counter = -5
-    expect(subject).to_not be_valid
+  it 'validates the presence of the photo' do
+    user.photo = nil
+    expect(user).to_not be_valid
+  end
+
+  describe '#recent_posts' do
+    before(:each) do
+      5.times do |i|
+        Post.new(title: "Post #{i}", text: "text#{i}", comments_counter: 0, likes_counter: 0, author_id: user.id)
+      end
+    end
+
+    it 'returns the last 3 posts' do
+      expect(user.recent_posts).to eq(Post.order(created_at: :desc).limit(3))
+    end
   end
 end
