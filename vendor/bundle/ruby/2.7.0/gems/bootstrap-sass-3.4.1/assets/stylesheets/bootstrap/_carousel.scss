@@ -2,7 +2,6 @@
 // Carousel
 // --------------------------------------------------
 
-
 // Wrapper for the slide container and indicators
 .carousel {
   position: relative;
@@ -16,12 +15,14 @@
   > .item {
     position: relative;
     display: none;
-    @include transition(.6s ease-in-out left);
+
+    @include transition(0.6s ease-in-out left);
 
     // Account for jankitude on images
     > img,
     > a > img {
       @include img-responsive;
+
       line-height: 1;
     }
 
@@ -34,17 +35,22 @@
       &.next,
       &.active.right {
         @include translate3d(100%, 0, 0);
+
         left: 0;
       }
+
       &.prev,
       &.active.left {
         @include translate3d(-100%, 0, 0);
+
         left: 0;
       }
+
       &.next.left,
       &.prev.right,
       &.active {
         @include translate3d(0, 0, 0);
+
         left: 0;
       }
     }
@@ -70,9 +76,11 @@
   > .next {
     left: 100%;
   }
+
   > .prev {
     left: -100%;
   }
+
   > .next.left,
   > .prev.right {
     left: 0;
@@ -81,10 +89,10 @@
   > .active.left {
     left: -100%;
   }
+
   > .active.right {
     left: 100%;
   }
-
 }
 
 // Left/right controls for nav
@@ -101,18 +109,21 @@
   text-align: center;
   text-shadow: $carousel-text-shadow;
   background-color: rgba(0, 0, 0, 0); // Fix IE9 click-thru bug
+
   @include opacity($carousel-control-opacity);
   // We can't have this transition here because WebKit cancels the carousel
   // animation if you trip this while in the middle of another animation.
 
   // Set gradients for backgrounds
   &.left {
-    @include gradient-horizontal($start-color: rgba(0, 0, 0, .5), $end-color: rgba(0, 0, 0, .0001));
+    @include gradient-horizontal($start-color: rgba(0, 0, 0, 0.5), $end-color: rgba(0, 0, 0, 0.0001));
   }
+
   &.right {
     right: 0;
     left: auto;
-    @include gradient-horizontal($start-color: rgba(0, 0, 0, .0001), $end-color: rgba(0, 0, 0, .5));
+
+    @include gradient-horizontal($start-color: rgba(0, 0, 0, 0.0001), $end-color: rgba(0, 0, 0, 0.5));
   }
 
   // Hover/focus state
@@ -121,7 +132,8 @@
     color: $carousel-control-color;
     text-decoration: none;
     outline: 0;
-    @include opacity(.9);
+
+    @include opacity(0.9);
   }
 
   // Toggles
@@ -135,16 +147,19 @@
     display: inline-block;
     margin-top: -10px;
   }
+
   .icon-prev,
   .glyphicon-chevron-left {
     left: 50%;
     margin-left: -10px;
   }
+
   .icon-next,
   .glyphicon-chevron-right {
     right: 50%;
     margin-right: -10px;
   }
+
   .icon-prev,
   .icon-next {
     width: 20px;
@@ -154,12 +169,13 @@
   }
 
   .icon-prev {
-    &:before {
+    &::before {
       content: "\2039";// SINGLE LEFT-POINTING ANGLE QUOTATION MARK (U+2039)
     }
   }
+
   .icon-next {
-    &:before {
+    &::before {
       content: "\203a";// SINGLE RIGHT-POINTING ANGLE QUOTATION MARK (U+203A)
     }
   }
@@ -199,7 +215,6 @@
     // set alpha transparency for the best results possible.
     background-color: #000 \9; // IE8
     background-color: rgba(0, 0, 0, 0); // IE9
-
     border: 1px solid $carousel-indicator-border-color;
     border-radius: 10px;
   }
@@ -232,7 +247,6 @@
   }
 }
 
-
 // Scale up controls for tablets and up
 @media screen and (min-width: $screen-sm-min) {
 
@@ -247,10 +261,12 @@
       margin-top: ($carousel-control-font-size / -2);
       font-size: ($carousel-control-font-size * 1.5);
     }
+
     .glyphicon-chevron-left,
     .icon-prev {
       margin-left: ($carousel-control-font-size / -2);
     }
+
     .glyphicon-chevron-right,
     .icon-next {
       margin-right: ($carousel-control-font-size / -2);
