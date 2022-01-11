@@ -225,7 +225,8 @@
 
 // Give the progress background some depth
 .progress {
-  @include gradient-vertical($start-color: darken($progress-bg, 4%), $end-color: $progress-bg); }
+  @include gradient-vertical($start-color: darken($progress-bg, 4%), $end-color: $progress-bg);
+}
 
 // Mixin for generating new styles
 @mixin progress-bar-styles($color) {
