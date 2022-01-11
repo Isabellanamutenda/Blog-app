@@ -8,3 +8,4 @@ class UsersController < ApplicationController
     render '../views/layouts/partials/_userdetails'
   end
 end
+
