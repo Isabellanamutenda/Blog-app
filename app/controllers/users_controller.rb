@@ -1,13 +1,10 @@
 class UsersController < ApplicationController
   def index
-    if current_user
-      @users = User.all
-    else
-      redirect_to user_session_path
-    end
+    @users = User.all
   end
 
   def show
     @user = User.find(params[:id])
+    @posts = Post.order(created_at: :desc).where(user_id: @user.id)
   end
 end
