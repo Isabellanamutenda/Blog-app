@@ -7,9 +7,8 @@ class CommentsController < ApplicationController
   end
 
   def create
-    # rubocop:disable Layout
     newcomment = Comment.new(params.require(:comment).permit(:text).merge(created_at: Time.now, updated_at: Time.now, user_id: current_user.id, post_id: params['post_id']))
-    # rubocop:enable Layout
+
     respond_to do |format|
       format.html do
         if newcomment.save

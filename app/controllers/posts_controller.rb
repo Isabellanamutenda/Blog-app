@@ -29,9 +29,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    # rubocop:disable Layout
     newpost = Post.new(params.require(:post).permit(:title, :text).merge(created_at: Time.now, updated_at: Time.now, user_id: current_user.id, comments_counter: 0, likes_counter: 0))
-    # rubocop:enable Layout
+
     respond_to do |format|
       format.html do
         if newpost.save
