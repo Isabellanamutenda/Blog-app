@@ -6,7 +6,13 @@ class Post < ApplicationRecord
   def update_post_counter
     user.increment!(:posts_counter)
   end
+  # after_save :update_post_counter
 
+  # private
+
+  # def update_post_counter
+  #   author.increment!(:posts_counter)
+  # end
   def recent_comments
     comments.limit(5).order(created_at: :desc)
   end
