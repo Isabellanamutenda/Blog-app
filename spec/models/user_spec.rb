@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  user = User.new(name: 'Kossi', bio: 'Formal Civil Engineer', post_counter: 0, photo: 'https://avatars.githubusercontent.com/u/74506933?v=4')
+  user = User.new(name: 'Donard', bio: 'I am a Full-stack developer', posts_counter: 0, photo: 'https://avatars.githubusercontent.com/u/74506933?v=4')
 
   before(:each) { user.save }
 
@@ -11,12 +11,12 @@ RSpec.describe User, type: :model do
   end
 
   it 'validates the presence of the posts_counter' do
-    user.post_counter = nil
+    user.posts_counter = nil
     expect(user).to_not be_valid
   end
 
   it 'validates the numericality of the posts_counter' do
-    user.post_counter = 'a'
+    user.posts_counter = 'a'
     expect(user).to_not be_valid
   end
 
@@ -33,12 +33,12 @@ RSpec.describe User, type: :model do
   describe '#recent_posts' do
     before(:each) do
       5.times do |i|
-        Post.new(title: "Post #{i}", text: "text#{i}", comments_counter: 0, likes_counter: 0, user_id: user.id)
+        Post.new(title: "Post #{i}", text: "text#{i}", comments_counter: 0, likes_counter: 0, author_id: user.id)
       end
     end
 
     it 'returns the last 3 posts' do
-      expect(user.recents_posts).to eq(Post.order(created_at: :desc).limit(3))
+      expect(user.recent_posts).to eq(Post.order(created_at: :desc).limit(3))
     end
   end
 end
