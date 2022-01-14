@@ -2,7 +2,7 @@
 
 class AddDeviseToUsers < ActiveRecord::Migration[6.1]
   def self.up
-     #change_table :users do |t|
+    change_table :users do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -34,7 +34,7 @@ class AddDeviseToUsers < ActiveRecord::Migration[6.1]
 
 
       # Uncomment below if timestamps were not included in your original model.
-      t.timestamps null: false
+      # t.timestamps null: false
     end
 
     add_index :users, :email,                unique: true
@@ -48,4 +48,4 @@ class AddDeviseToUsers < ActiveRecord::Migration[6.1]
     # model already existed. Please edit below which fields you would like to remove in this migration.
     raise ActiveRecord::IrreversibleMigration
   end
-  
+end
