@@ -3,3 +3,4 @@ class AddRoleToUsers < ActiveRecord::Migration[6.1]
     add_column :users, :role, :string
   end
 end
+
