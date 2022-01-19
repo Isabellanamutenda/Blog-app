@@ -1,12 +1,13 @@
 class CommentsController < ApplicationController
   skip_before_action :verify_authenticity_token
-  load_and_authorize_resource
+  load_and_authorize_resource 
   def new
     @comment = Comment.new
   end
 
   def create
     @comment = Comment.new(comment_params)
+    @comment.author_id = current_user.id
     @comment.post_id = params[:post_id]
     if @comment.save
       flash[:notice] = 'Comment successfully added!'
@@ -19,8 +20,8 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    flash[:notice] = 'Comment Deleted Succefully'
-    redirect_back fallback_location: root_path
+    flash[:succes] = 'Comment was deleted successfully'
+    redirect_to user_post_path(current_user)
   end
 
   private
