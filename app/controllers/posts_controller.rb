@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   skip_before_action :verify_authenticity_token
+  load_and_authorize_resource
   def index
     @user = User.includes(:posts).find(params[:user_id])
   end
@@ -14,15 +15,25 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new
-    @post.title = params[:title]
-    @post.text = params[:text]
-    @post.author_id = current_user.id
-    if @post.save
-      flash[:notice] = 'Post successfully added!'
-      redirect_to user_posts_path
+    if current_user
+      @post = current_user.posts.new(params[:id])
+      @post.title = params[:title]
+      @post.text = params[:text]
+      if @post.save
+        flash[:notice] = 'Post successfully added!'
+        redirect_to user_posts_path
+      else
+        render 'new'
+      end
     else
-      render 'new'
+      redirect_to new_user_session_path, notice: 'You are not logged in.'
     end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    flash[:notice] = 'Post Deleted Succefully'
+    redirect_back fallback_location: root_path
   end
 end
