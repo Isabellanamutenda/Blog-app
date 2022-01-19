@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   skip_before_action :verify_authenticity_token
-  load_and_authorize_resource 
+  load_and_authorize_resource
   def index
     @user = User.includes(:posts).find(params[:user_id])
   end
