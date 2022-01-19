@@ -1,5 +1,5 @@
 require 'rails_helper'
-
+# rubocop:disable Metrics/BlockLength
 RSpec.feature 'User Show', type: :feature do
   before(:each) do
     @first_user = User.create(name: 'Donard', email: 'donardgolaj@gmail.com', password: 'donard12', posts_counter: 0)
@@ -61,3 +61,4 @@ RSpec.feature 'User Show', type: :feature do
     expect(page).to have_content @comment.text
   end
 end
+# rubocop:enable Metrics/BlockLength
