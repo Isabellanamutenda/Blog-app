@@ -1,5 +1,5 @@
 require 'rails_helper'
-# rubocop:disable Metrics/BlockLength
+
 RSpec.feature 'Login', type: :feature do
   it 'can enter a name and receive a greeting' do
     visit user_session_path
@@ -43,4 +43,3 @@ RSpec.feature 'Login', type: :feature do
     expect(page).to have_content 'Invalid Email or password.'
   end
 end
-# rubocop:enable Metrics/BlockLength
